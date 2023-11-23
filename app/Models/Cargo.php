@@ -14,4 +14,8 @@ class Cargo extends Model
         'activo',
         'idUsuarioCreacion',
     ];
+    protected $hidden=[
+        'created_at',
+        'updated_at',
+    ];
 }

@@ -14,8 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::all();
-    }
+        $users = User::with('cargo', 'departamento')->get();
+        return response()->json($users, 200);    }
 
     /**
      * Store a newly created resource in storage.

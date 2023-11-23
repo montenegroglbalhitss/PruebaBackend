@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Models;
+use App\Models\Cargo;
+use App\Models\Departamento;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -20,11 +22,26 @@ class User extends Authenticatable
     protected $fillable = [
         'usuario',
         'primerNombre',
+        'email',
         'segundoNombre',
         'primerApellido',
         'segundoApellido',
         'idDepartamento',
         'idCargo',
     ];
+    protected $hidden=[
+        'created_at',
+        'updated_at',
+    ];
+
+    public function cargo()
+    {
+        return $this->belongsTo(Cargo::class, 'idCargo');
+    }
+
+    public function departamento()
+    {
+        return $this->belongsTo(Departamento::class, 'idDepartamento');
+    }
  
 }
